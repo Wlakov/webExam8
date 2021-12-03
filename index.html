@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        let mdiv=document.createElement("div")
+        document.body.appendChild(mdiv);
+        mdiv.style.display='inline-flex'
+
+        let fdiv=document.createElement('div')
+        mdiv.appendChild(fdiv)
+        fdiv.setAttribute('id','first')
+        fdiv.style.width='300px'
+        fdiv.style.height='300px'
+        fdiv.style.backgroundColor='green'
+
+        let sdiv=document.createElement('div')
+        mdiv.appendChild(sdiv)
+        sdiv.setAttribute('id','second')
+        sdiv.style.width='300px'
+        sdiv.style.height='300px'
+        sdiv.style.backgroundColor='red'
+
+        let button=document.createElement('button');
+        mdiv.appendChild(button)
+        button.setAttribute('id','but')
+        button.innerHTML='start'
+        button.style.height='50px';
+        button.style.width='100px';
+
+        let but=document.getElementById('but')
+        let f=document.getElementById('first')
+        let s=document.getElementById('second')
+        but.addEventListener('click',setRed())
+
+        function setRed(){
+            f.style.backgroundColor='red';
+            s.style.backgroundColor='green'
+            but.removeEventListener('click',setRed)
+            but.addEventListener('click',setGreen)
+        }
+        function setGreen() {
+            f.style.backgroundColor='green';
+            s.style.backgroundColor='red'
+            but.removeEventListener('click',setGreen)
+            but.addEventListener('click',setRed)
+        }
+    </script>
+</body>
+</html>
